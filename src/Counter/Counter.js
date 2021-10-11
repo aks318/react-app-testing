@@ -9,10 +9,19 @@ const Counter = () => {
     return (
         <div>
             <h3 data-testid = "header">My Counter</h3>
-            <h2 data-testid = "counter">{counterValue}</h2>
-            <button data-testid = "subtract-btn">-</button>
-            <input className = "text-center" data-testid = "input" type = "number" value = {inputValue}/>
-            <button data-testid = "add-btn">+</button>
+            <h2 data-testid = "counter"
+                className = {`${counterValue >= 100 ? "green" : ""}${counterValue <= -100 ? "red" : ""}`} 
+            >{counterValue}</h2>
+            <button data-testid = "subtract-btn" onClick = {(e) => setCounterValue(counterValue - inputValue)}>-</button>
+            <input className = "text-center" 
+            data-testid = "input" 
+            type = "number" 
+            value = {inputValue}
+            onChange = {(e) => {
+                setInputValue(parseInt(e.target.value))
+            }}
+            />
+            <button data-testid = "add-btn" onClick = {(e) => setCounterValue(counterValue + inputValue)}>+</button>
         </div>
     )
 }
