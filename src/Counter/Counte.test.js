@@ -5,8 +5,8 @@ import "@testing-library/jest-dom/extend-expect"
 
 
 test('Header renders correctly with text', () => {
-    const component = render(<Counter />)
-    const headerEl = component.getByTestId("header")
+    const {getByTestId} = render(<Counter />)
+    const headerEl = getByTestId("header")
 
     expect(headerEl.textContent).toBe("My Counter")
 })
